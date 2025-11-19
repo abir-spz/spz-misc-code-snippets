@@ -1,7 +1,7 @@
 // video autoplay on hover logic (with wait for element)
 waitForElm('.some-card-selector').then((card) => {
 	// select all anchor elements inside the cards
-	const cards = document.querySelectorAll('.spz_1012_v .spz-thank-you__card.has-video');
+	const cards = document.querySelectorAll('.some-card-selector.has-video');
 
 	// loop through each card
 	cards.forEach(card => {
