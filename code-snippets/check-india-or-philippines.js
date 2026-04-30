@@ -170,3 +170,51 @@ function isIndiaOrPhilippines() {
         code: ''
     };
 }
+
+
+
+/**
+ * 🟥 Check if visitor belongs to India or Philippines using query param
+ *
+ * Expected URL format:
+ * ?geo=IN  → India
+ * ?geo=PH  → Philippines
+ *
+ * Returns:
+ * {
+ *   allowed: Boolean → whether user is part of soft launch
+ *   country: String → readable country name
+ *   code: String → ISO country code
+ * }
+ */
+function isIndiaOrPhilippinesByParam() {
+
+    // Read "geo" query param and normalize to uppercase
+    // Example: ?geo=in → IN
+    var softLaunchGeoCheck = (getQueryParam('geo') || '').toUpperCase();
+
+    // 🟩 India check
+    if (softLaunchGeoCheck === 'IN') {
+        return {
+            allowed: true,
+            country: 'India',
+            code: 'IN'
+        };
+    }
+
+    // 🟩 Philippines check
+    if (softLaunchGeoCheck === 'PH') {
+        return {
+            allowed: true,
+            country: 'Philippines',
+            code: 'PH'
+        };
+    }
+
+    // 🟥 Fallback → Not part of soft launch
+    return {
+        allowed: false,
+        country: 'Other Country',
+        code: ''
+    };
+}
