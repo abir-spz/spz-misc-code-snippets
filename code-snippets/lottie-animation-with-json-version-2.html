@@ -1,0 +1,82 @@
+<!-- Add this container anywhere in DOM -->
+
+<!-- lottie animation -->
+<div class="spz-animation-container">
+	<div id="spz-lottie-animation"></div>
+</div>
+
+<!-- Add this CSS (change accordingly) -->
+<style>
+.spz_2003_v .spz-animation-container { width: 100%; max-width: 100%; /* Adjust size as needed */ height: 471px; margin: 0px auto; border: none; }
+</style>
+
+<!-- Add and call this JS (change accordingly) -->
+<script>
+// Wait for SPZ lottie container then activate lottie animation
+waitForElm("#spz-lottie-animation").then((elem) => {
+	initLottieAnimation();
+});
+
+// 🟥 ── Utility function to handle lottie animation
+function initLottieAnimation() {
+    // Lottie Config Object (All editable settings live here)
+    const config = {
+        lottieLibrary: "https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js", // Lottie CDN
+        containerId: "spz-lottie-animation", // Target container ID
+        animationPath: "https://res.cloudinary.com/spiralyze/raw/upload/v1778575044/matik/2003/lottie-json/2003-lottie.json", // JSON animation URL
+        renderer: "svg", // Best quality render mode
+        loop: true, // Repeat animation infinitely
+        autoplay: true // Start automatically
+    };
+
+    // Load Lottie library dynamically - If already loaded, skip loading
+    function loadScript(src, callback) {
+        // If script already exists
+        if (document.querySelector(`script[src="${src}"]`)) {
+            callback();
+            return;
+        }
+
+        // Create script tag
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+
+        // Success callback
+        script.onload = callback;
+
+        // Error handling
+        script.onerror = function () {
+            console.error("Failed to load script:", src);
+        };
+
+        // Inject into page
+        document.head.appendChild(script);
+    }
+
+    // Initialize animation after library loads
+    function runLottie() {
+        // Find target container
+        const container = document.getElementById(config.containerId);
+
+        if (!container) {
+            console.error("Lottie container not found:", config.containerId);
+            return;
+        }
+
+        // Start animation
+        lottie.loadAnimation({
+            container: container,
+            renderer: config.renderer,
+            loop: config.loop,
+            autoplay: config.autoplay,
+            path: config.animationPath
+        });
+
+        console.log("Lottie animation initialized.");
+    }
+
+    // Start process
+    loadScript(config.lottieLibrary, runLottie);
+}
+</script>
