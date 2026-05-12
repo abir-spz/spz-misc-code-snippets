@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie Animation Example</title>
+    
+    <style>
+        .animation-container {
+            width: 100%;
+            max-width: 100%; /* Adjust size as needed */
+            height: 900px;
+            margin: 50px auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animation-container">
+        <div id="lottie-animation"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script>
+    	document.addEventListener('DOMContentLoaded', () => {
+    // 1. Get a reference to the container element
+    const animationContainer = document.getElementById('lottie-animation');
+
+    // 2. Define the path to your JSON file
+    // NOTE: Ensure your JSON file is accessible at this path!
+    const animationPath = 'https://res.cloudinary.com/spiralyze/raw/upload/v1760618883/document360kovai/3001/Doc360-3001-animation.json'; 
+
+    if (animationContainer) {
+        // 3. Configure the Lottie animation
+        const anim = lottie.loadAnimation({
+            container: animationContainer, // The DOM element to render the animation in
+            renderer: 'svg',               // Use 'svg' for highest quality and compatibility
+            loop: true,                    // Set to true to loop the animation
+            autoplay: true,                // Start playing automatically
+            path: animationPath            // The path to your JSON file
+        });
+        
+        console.log("Lottie animation initialized and playing.");
+
+        // Optional: You can control the animation using the 'anim' variable later:
+        // anim.pause();
+        // anim.setSpeed(0.5); // Play at half speed
+    } else {
+        console.error("Lottie container div not found!");
+    }
+});
+    </script>
+
+</body>
+</html>
