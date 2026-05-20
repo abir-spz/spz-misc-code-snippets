@@ -1,0 +1,25 @@
+.spz_2005_v .spz-meet-fishbowl-ai__card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 32px;
+    border-radius: 8px;
+    background: linear-gradient(245deg, rgba(252, 228, 195, 0.20) 16.08%, rgba(234, 223, 241, 0.20) 50.07%, rgba(212, 242, 254, 0.20) 84.43%), #FFF;
+}
+
+.spz_2005_v .spz-meet-fishbowl-ai__card:before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    padding: 1.05px; 
+    border-radius: 8px; 
+    background: linear-gradient(245deg, #FCE4C3 16.08%, #EADFF1 50.07%, #D4F2FE 84.43%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+    -webkit-mask-composite: xor; 
+    mask-composite: exclude; 
+    pointer-events: none; 
+    z-index: 2; 
+    opacity: 1; 
+    pointer-events: none; 
+}
