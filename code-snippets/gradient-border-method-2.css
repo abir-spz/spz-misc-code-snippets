@@ -1,0 +1,13 @@
+/* using gradient in padding-box and border-box */
+.spz_2005_v .spz-gradient-border-block {
+	/* 1. Define a transparent border width */
+	border: 4px solid transparent; 
+
+	/* 2. Layer two backgrounds: top layer (padding-box) and bottom layer (border-box) */
+	background: 
+	linear-gradient(#fff, #fff) padding-box, 
+	linear-gradient(to right, #ff7e5f, #feb47b) border-box;
+
+	/* 3. Fully compatible with rounded corners */
+	border-radius: 12px;  
+}
