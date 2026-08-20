@@ -47,3 +47,28 @@ function handleViewportChange(event) {
 desktopQuery.addEventListener('change', handleViewportChange);
 
 // Rest of A/B test code
+
+
+
+
+//=========================== METHOD 3
+// This following code is for desktop only test
+const DESKTOP_QUERY = '(min-width: 1025px) and (hover: hover) and (pointer: fine)';
+const desktopMedia = window.matchMedia(DESKTOP_QUERY);
+
+function isEligibleDevice() {
+	return desktopMedia.matches;
+}
+
+if (!isEligibleDevice()) {
+	// remove_current_test(); // if SPA
+	return;
+}
+
+desktopMedia.addEventListener('change', function (event) {
+	if (!event.matches) {
+		window.location.reload();
+	}
+});
+
+// Rest of A/B test code
