@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scheduler Execution Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #form-container { border: 1px solid #ccc; padding: 20px; max-width: 500px; }
+    </style>
+</head>
+<body>
+
+    <div id="form-container">
+        <h3>Simulated Qualification Form</h3>
+        <label for="headcount">Company Headcount:</label>
+        <input type="number" id="headcount" value="10">
+        <button onclick="simulateFormSubmit()">Submit Form</button>
+    </div>
+
+    <script>
+        function simulateFormSubmit() {
+            const headcount = parseInt(document.getElementById('headcount').value);
+            
+            // Qualification threshold (e.g., 50+)
+            if (headcount >= 50) {
+                loadHubSpotScheduler();
+            } else {
+                document.getElementById('form-container').innerHTML = 
+                    "<h3>Thank you!</h3><p>An advisor will be in touch shortly.</p>";
+            }
+        }
+
+        function loadHubSpotScheduler() {
+            const targetDiv = document.getElementById('form-container');
+            
+            // 1. Replace form with scheduler container
+            targetDiv.innerHTML = `
+                <h3>Schedule Your Demo</h3>
+                <div class="meetings-iframe-container" data-src="https://meetings-eu1.hubspot.com/mark-fielding/website-meeting-scheduler-inbound?embed=true"></div>
+            `;
+            
+            // 2. Dynamically inject the HubSpot script
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+/* Moorepay 2016 - Get Demo | Product Showcase (VARIANT) - built over TC (2006 + Hidden Value) - Target URLs (/book-a-demo/, /book-a-demo-bot/, /speak-to-sales-bot/) */
+
+/* ==== 🟥 Wrappers / hide native chrome / shell ==== */
+/* Hide the native page chrome so the fixed split-screen overlay owns the viewport */
+.spz_2016_v header,
+.spz_2016_v section.trustpilot-carousel,
+.spz_2016_v section.tone-band.image-carousel,
+.spz_2016_v footer,
+.spz_2016_v #chatbot-iframe { display: none; }
+
+body.spz_2016_v { overflow: hidden; }
+
+.spz_2016_v .spz-hidden { display: none; }
+
+/* Full-screen fixed overlay that holds the split screen (white base, showcase paints its own dark bg) */
+.spz_2016_v section.contact-form { background: #FFFFFF; padding: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; z-index: 9; overflow: auto; }
+
+.spz_2016_v section.contact-form > .container:not(:has(.contact-form__wrapper)),
+.spz_2016_v:not(.speak-to-sales-bot) section.contact-form > .container:first-child,
+.spz_2016_v section.contact-form .container .block-headings__wrapper { display: none !important; }
+
+.spz_2016_v section.contact-form > .container:has(.contact-form__wrapper) { padding: 0; max-width: none; display: flex; min-height: 100%; }
+
+/* Desktop: showcase (left) + form (right) side by side, 50/50 */
+.spz_2016_v section.contact-form > .container .contact-form__wrapper { display: flex; flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 0; width: 100%; min-height: 100dvh; flex-wrap: nowrap; }
+/* Tablet + Mobile: stack showcase over the form */
+@media (max-width: 1023.98px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper { flex-direction: column; }
+}
+
+
+/* ==== 🟥 Left / Product showcase panel ==== */
+/* Desktop */
+.spz_2016_v section.contact-form > .container .contact-form__wrapper .content-form__copy { flex: 1 1 50%; width: 50%; max-width: none; box-sizing: border-box; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; background-color: #003E6F; background-image: url("https://res.cloudinary.com/spiralyze/image/upload/f_auto/moorepay/2016/bg-hero.webp"); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 64px 0; display: flex; flex-direction: column; justify-content: center; align-items: stretch; overflow: hidden; }
+.spz_2016_v .spz-tiles-hero { display: flex; flex-direction: column; gap: 64px; width: 100%; max-width: 720px; margin-left: auto; } /* pin content to the split centre on wide screens */
+.spz_2016_v .spz-tiles-title { margin: 0; color: #FFFFFF; font-family: Avenir, Arial, sans-serif; font-size: 32px; font-style: normal; font-weight: 800; line-height: 40px; letter-spacing: 0; padding: 0 40px 0 64px; }
+/* Tablet */
+@media (max-width: 1023.98px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper .content-form__copy { width: 100%; flex-basis: auto; padding: 48px 0; }
+    .spz_2016_v .spz-tiles-hero { gap: 40px; max-width: none; margin-left: 0; }
+    .spz_2016_v .spz-tiles-title { padding: 0 64px; max-width: 768px; margin: auto; }
+}
+/* Mobile */
+@media (max-width: 767.98px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper .content-form__copy { padding: 40px 0; }
+    .spz_2016_v .spz-tiles-hero { gap: 32px; }
+    .spz_2016_v .spz-tiles-title { font-size: 24px; line-height: 32px; padding: 0 21px; }
+}
+
+/* 4K background swap */
+@media (min-width: 2560px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper .content-form__copy { background-image: url("https://res.cloudinary.com/spiralyze/image/upload/f_auto/moorepay/2016/bg-hero-desktop-4k_1.webp"); }
+}
+
+
+/* ==== 🟥 Marquee carousel (CSS auto-scroll) ==== */
+/* Fade the edges + block all interaction (tiles/images are static and unclickable) */
+.spz_2016_v .spz-tiles-carousel { width: 100%; overflow: hidden; pointer-events: all; -webkit-user-select: none; user-select: none; -webkit-mask-image: linear-gradient(270deg, rgba(217, 217, 217, 0.00) -3.61%, #A5A5A5 20.03%, #858585 71.2%, rgba(115, 115, 115, 0.00) 100%); mask-image: linear-gradient(270deg, rgba(217, 217, 217, 0.00) -3.61%, #A5A5A5 20.03%, #858585 71.2%, rgba(115, 115, 115, 0.00) 100%); }
+.spz_2016_v .spz-tiles-track { display: flex; gap: 24px; width: max-content; will-change: transform; animation: spz-tiles-scroll 36s linear infinite; }
+.spz_2016_v .spz-tiles-card { flex: 0 0 282px; width: 282px; height: 340px; box-sizing: border-box; display: flex; flex-direction: column; border: 1px solid #008EC9; border-radius: 8px; background: rgba(241, 249, 253, 0.10); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); overflow: hidden; }
+.spz_2016_v .spz-tiles-card-head { display: flex; align-items: center; gap: 8px; padding: 24px 24px 0; overflow: hidden; }
+.spz_2016_v .spz-tiles-card-icon { display: flex; flex: 0 0 24px; width: 24px; height: 24px; }
+.spz_2016_v .spz-tiles-card-icon svg { display: block; width: 24px; height: 24px; }
+.spz_2016_v .spz-tiles-card-title { color: #FFFFFF; font-family: Avenir, Arial, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; line-height: 24px; white-space: nowrap; }
+.spz_2016_v .spz-tiles-card-img { display: block; width: 100%; height: 276px; margin-top: 16px; object-fit: cover; object-position: center; }
+/* One full set = 6 cards * (282 + 24 gap) = 1836px; shifting by exactly that loops seamlessly (12 tiles rendered) */
+/* @keyframes spz-tiles-scroll { from { transform: translateX(0, 0, 0); } to { transform: translate3d(-1836px, 0, 0); } } */
+@keyframes spz-tiles-scroll { from { transform: translate3d(-1836px, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+@media (prefers-reduced-motion: reduce) { .spz_2016_v .spz-tiles-track { animation: none; } }
+
+
+/* ==== 🟥 Bullet points ==== */
+/* Desktop */
+.spz_2016_v .spz-tiles-bullets { list-style: none; margin: 0; padding: 0 40px 0 64px; display: flex; flex-direction: column; gap: 16px; }
+.spz_2016_v .spz-tiles-bullets li { position: relative; color: #FFFFFF; font-family: Avenir, Arial, sans-serif; font-size: 18px; font-style: normal; font-weight: 300; line-height: 26px; padding-left: 36px; }
+.spz_2016_v .spz-tiles-bullets li::before { content: ""; width: 24px; height: 24px; background: url("https://res.cloudinary.com/spiralyze/image/upload/f_svg/v1787057925/moorepay/2016/bullet-1_1.svg") no-repeat center / 24px 24px; position: absolute; top: 0; left: 0; }
+.spz_2016_v .spz-tiles-bullets li strong { font-weight: 800; }
+/* Tablet */
+@media (max-width: 1023.98px) {
+    .spz_2016_v .spz-tiles-bullets { padding: 0 64px; max-width: 768px; margin: auto; }
+}
+/* Mobile */
+@media (max-width: 767.98px) {
+    .spz_2016_v .spz-tiles-bullets { padding: 0 21px; }
+    .spz_2016_v .spz-tiles-bullets li { font-size: 16px; line-height: 24px; }
+}
+
+
+/* ==== 🟥 Right / Form panel + clickable logo ==== */
+/* Desktop */
+.spz_2016_v section.contact-form > .container .contact-form__wrapper > div:not(.content-form__copy) { flex: 1 1 50%; width: 50%; max-width: none; box-sizing: border-box; background: #FFFFFF; -webkit-box-shadow: 8px 16px 53.2px 0 rgba(5, 43, 60, 0.48); box-shadow: 8px 16px 53.2px 0 rgba(5, 43, 60, 0.48); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 64px; position: relative; z-index: 2; }
+.spz_2016_v .spz-brand-logo { order: -1; align-self: center; display: inline-block; margin: 0 0 124px; margin: 0 0 -10px; transform: translateY(-134px); }
+.spz_2016_v .spz-brand-logo img { display: block; width: 177px; height: auto; }
+
+/* 1920px/4K background swap */
+@media (min-width: 1920px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper > div:not(.content-form__copy) { align-items: flex-start; }
+    .spz_2016_v .spz-brand-logo { margin: 0 0 60px; transform: translateY(-100px); }
+}
+
+/* Tablet */
+@media (max-width: 1023.98px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper > div:not(.content-form__copy) { width: 100%; flex-basis: auto; padding: 48px 64px; }
+    .spz_2016_v .spz-brand-logo { margin: 0 0 40px; transform: translateY(0px); }
+}
+/* Mobile */
+@media (max-width: 767.98px) {
+    .spz_2016_v section.contact-form > .container .contact-form__wrapper > div:not(.content-form__copy) { padding: 40px 21px; }
+    .spz_2016_v .spz-brand-logo { margin-bottom: 40px; }
+    .spz_2016_v .spz-brand-logo img { width: 142px; }
+}
+
+
+/* ==== 🟥 Form (restyle, retains TC functionality) ==== */
+/* Desktop */
+.spz_2016_v section.contact-form .contact-form__form { border: none; padding: 0; border-radius: 0; box-shadow: none; background: transparent; transform: none; margin: 0; width: 100%; max-width: 592px; display: flex; flex-direction: column; align-items: stretch; }
+.spz_2016_v section.contact-form .contact-form__form:before { content: "Get a demo"; color: #002654; text-align: center; font-family: Avenir, Arial, sans-serif; font-size: 32px; font-style: normal; font-weight: 800; line-height: 40px; display: block; margin-bottom: 24px; }
+.spz_2016_v.speak-to-sales-bot section.contact-form .contact-form__form:before { content: 'Contact sales'; }
+.spz_2016_v section.contact-form .contact-form__form .form { margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .form + img { display: none; }
+.spz_2016_v section.contact-form .contact-form__form > div:not(.form):not(.spz-brand-logo):not(.spz-form-logo) { display: none; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form fieldset.form-columns-2 > * { width: calc(50% - 6px) !important; margin-bottom: 12px; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form fieldset .hs_product_interest { margin-bottom: 12px; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field { position: relative; width: 100%; margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field label[id*="label-"]:not([id*="label-persona_responsibilities"]) { color: #343D4A; text-align: left; font-family: "Avenir", "Arial", "sans-serif"; font-size: 16px; font-style: normal; font-weight: 300; line-height: 24px; display: inline-block; margin: 0; position: absolute; top: 12px; left: 16px; z-index: 1; pointer-events: none; cursor: text; -webkit-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; transition: all .2s ease-in-out; background: #FFF; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field .hs-form-required { color: #343D4A; margin: 0; display: none !important; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form { margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=email],
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=file],
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=number],
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=password],
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=tel],
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=text],
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form select { display: block; width: 100%; color: #002654; font-size: 16px; font-style: normal; font-weight: 300; line-height: 24px; height: 48px; border-radius: 4px; border: 1px solid #A5B0C0; padding-left: 16px; padding-right: 16px; outline: none; text-overflow: ellipsis; background-color: transparent; -webkit-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; transition: all .2s ease-in-out; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=number] { -moz-appearance: textfield; color: #EBF4F9; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=number]::-webkit-outer-spin-button,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .form-columns-2 { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 12px; row-gap: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .form-columns-2.spz-swap-order { flex-direction: row-reverse; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form select { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOSAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTguOTY3MzkgMTIuNTMyNkM5LjEwNzkyIDEyLjY3MjMgOS4yOTgwMSAxMi43NTA3IDkuNDk2MTQgMTIuNzUwN0M5LjY5NDI4IDEyLjc1MDcgOS44ODQzNyAxMi42NzIzIDEwLjAyNDkgMTIuNTMyNkwxNi4wMjQ5IDYuNTMyNjRDMTYuMTQ3OCA2LjM4OTE2IDE2LjIxMiA2LjIwNDYxIDE2LjIwNDcgNi4wMTU4NUMxNi4xOTc0IDUuODI3MDkgMTYuMTE5MSA1LjY0ODA0IDE1Ljk4NTYgNS41MTQ0N0MxNS44NTIgNS4zODA5IDE1LjY3MjkgNS4zMDI2NSAxNS40ODQyIDUuMjk1MzZDMTUuMjk1NCA1LjI4ODA2IDE1LjExMDkgNS4zNTIyNyAxNC45Njc0IDUuNDc1MTRMOS40OTk4OSAxMC45NDI2TDQuMDMyMzkgNS40Njc2NEMzLjg5MTE3IDUuMzI2NDEgMy42OTk2MiA1LjI0NzA3IDMuNDk5ODkgNS4yNDcwN0MzLjMwMDE3IDUuMjQ3MDcgMy4xMDg2MiA1LjMyNjQxIDIuOTY3MzkgNS40Njc2NEMyLjgyNjE3IDUuNjA4ODcgMi43NDY4MyA1LjgwMDQxIDIuNzQ2ODMgNi4wMDAxNEMyLjc0NjgzIDYuMTk5ODcgMi44MjYxNyA2LjM5MTQxIDIuOTY3MzkgNi41MzI2NEw4Ljk2NzM5IDEyLjUzMjZaIiBmaWxsPSIjMzQzRDRBIi8+Cjwvc3ZnPg=="); background-repeat: no-repeat; background-position: right 16px center; background-size: auto; padding-right: 40px; white-space: nowrap; text-overflow: ellipsis; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form select option.hidden { display: none; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs-button,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=submit] { width: 100%; border-radius: 2px; background: #008EC9; color: #FFFFFF; text-align: center; font-family: "Avenir", "Arial", "sans-serif"; font-size: 14px; font-style: normal; font-weight: 800; line-height: 22px; letter-spacing: 1.4px; text-transform: uppercase; height: 56px; border: none; margin: 0; cursor: pointer; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs-button:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=submit]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs-button:focus-visible,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=submit]:focus-visible { background: #006A96; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_submit.hs-submit { padding-top: 12px; padding-bottom: 16px; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p a { color: #343D4A; text-align: center; font-family: "Avenir", "Arial", "sans-serif"; font-size: 12px; font-style: normal; font-weight: 300; line-height: 20px; letter-spacing: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p em { font-weight: 300; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p a { color: #343D4A; text-decoration-line: underline; text-decoration-style: solid; text-decoration-skip-ink: none; text-decoration-thickness: auto; text-underline-offset: auto; text-underline-position: from-font; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p a:hover { color: #008EC9; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container .hs-richtext { margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities legend.hs-field-desc { display: none !important; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities label[id*="label-persona_responsibilities"] { margin: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities label[id*="label-persona_responsibilities"] span { color: #002654; font-family: "Avenir", "Arial", "sans-serif"; font-size: 14px; font-style: normal; font-weight: 800; line-height: 22px; margin: 0; display: block; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities label[id*="label-persona_responsibilities"]:after { content: "Please select all that apply"; color: #343D4A; font-family: "Avenir", "Arial", "sans-serif"; font-size: 14px; font-style: normal; font-weight: 350; line-height: 22px; display: block; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities div.input ul.inputs-list.multi-container { gap: 0; justify-content: space-between; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities div.input ul.inputs-list.multi-container li { margin: 0; width: auto; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities div.input ul.inputs-list.multi-container li label { position: relative; margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities div.input ul.inputs-list.multi-container li label input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs_persona_responsibilities div.input ul.inputs-list.multi-container li label span { color: #002654; text-align: center; font-family: "Avenir", "Arial", "sans-serif"; font-size: 14px; font-style: normal; font-weight: 300; line-height: 22px; display: flex; flex-wrap: wrap; align-items: center; }
+
+/* Hover */
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=email]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=file]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=number]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=password]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=tel]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=text]:hover,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form form select:hover { border-color: #546277; }
+
+/* Filled (floating label lifts) */
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field.filled input,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field.filled select { border-color: #343D4A; color: #002654; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field.filled label[id*="label-"]:not([id*="label-persona_responsibilities"]) { color: #002654; font-size: 12px; font-weight: 800; line-height: 20px; top: -11px; padding: 2px; left: 15px; background-color: #FFFFFF; z-index: 1; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field.filled .hs-form-required { color: #002654; }
+
+/* Error */
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(input.invalid) input,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(select.invalid) select { border-color: #F00; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(input.invalid) label[id*="label-"]:not([id*="label-persona_responsibilities"]),
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(select.invalid) label[id*="label-"]:not([id*="label-persona_responsibilities"]) { color: #F00; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(input.invalid) .hs-form-required,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(select.invalid) .hs-form-required { color: #F00; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field.filled:has(input.invalid) label[id*="label-"]:not([id*="label-persona_responsibilities"]) { font-size: 12px; font-weight: 800; line-height: 20px; top: -11px; padding: 2px; left: 15px; background-color: #FFFFFF; z-index: 1; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-error-msgs li { margin-top: 4px; margin-bottom: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-error-msgs li label { color: #F00; font-family: "Avenir", "Arial", "sans-serif"; font-size: 12px; font-style: normal; font-weight: 300; line-height: 20px; margin: 0; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs_error_rollup .hs-error-msgs li label { text-align: center; }
+
+/* Focus */
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(input:focus) input,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(select:focus) select { border-color: #008EC9; color: #002654; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(input:focus) label[id*="label-"]:not([id*="label-persona_responsibilities"]),
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(select:focus) label[id*="label-"]:not([id*="label-persona_responsibilities"]) { color: #008EC9; font-size: 12px; font-weight: 800; line-height: 20px; top: -11px; padding: 2px; left: 15px; background-color: #FFFFFF; z-index: 1; }
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(input:focus) .hs-form-required,
+.spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs-form-field:has(select:focus) .hs-form-required { color: #008EC9; }
+
+/* Tablet - form widens to 640 inside the stacked panel */
+@media (max-width: 1023.98px) {
+    .spz_2016_v section.contact-form .contact-form__form { max-width: 640px; }
+}
+/* Mobile - single column form */
+@media (max-width: 767.98px) {
+    .spz_2016_v section.contact-form .contact-form__form { max-width: 100%; }
+    .spz_2016_v section.contact-form .contact-form__form:before { font-size: 32px; line-height: 40px; }
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form .hs_persona_responsibilities { width: 100%; }
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form fieldset.form-columns-2 > * { width: 100% !important; }
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form .form-columns-2.spz-swap-order { flex-wrap: wrap; flex-direction: column-reverse; }
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form form .hs-button,
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form form input[type=submit] { height: 56px; }
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p { font-size: 12px; line-height: 20px; }
+    .spz_2016_v section.contact-form .contact-form__form .hbspt-form form .legal-consent-container p a { font-size: 12px; line-height: 20px; word-break: keep-all; display: inline-block; }
+}
+
+
+/* ==== 🟥 Accreditation logos (under the form) ==== */
+/* Desktop */
+.spz_2016_v .spz-form-logo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 24px; width: 100%; }
+.spz_2016_v .spz-form-logo img { display: block; max-width: 100%; max-height: 32px; }
+/* Mobile */
+@media (max-width: 767.98px) {
+    .spz_2016_v .spz-form-logo img { max-height: 24px; }
+}
+
+
+/* ==== 🟥 HubSpot Schedular ==== */
+.spz-hubspot-scheduler { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; padding: 20px 20px; overflow-y: auto; position: fixed; top: 0; left: 0; z-index: 100; background: rgba(0, 45, 92, 0.5); backdrop-filter: blur(15px); }
+.spz-hubspot-scheduler .meetings-iframe-container { width: 100%; margin: auto; }
+.spz-hubspot-scheduler .meetings-iframe-container:empty:before { content: ''; display: block; width: 60px; height: 60px; margin: auto; border: 4px solid rgba(255, 255, 255, 0.3); border-top-color: rgba(0, 47, 94, 0.45); border-radius: 50%; animation: hbsptSchdlrLdrAnmtn 5s ease-in-out infinite; }
+@keyframes hbsptSchdlrLdrAnmtn { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
